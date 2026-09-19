@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232B4CFF'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3E%D0%A1%D0%A0%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme: light;
@@ -27,7 +27,7 @@
     --accent-soft: rgba(43,76,255,0.08);
     --signal: #C97A1E;
     --signal-soft: rgba(201,122,30,0.12);
-    --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
     --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --radius-lg: 20px;
     --radius-md: 14px;
@@ -134,7 +134,7 @@
   .hero-kicker strong{ color: var(--ink); font-weight:600; }
 
   h1.headline{
-    font-family: var(--font-display); font-weight: 800;
+    font-family: var(--font-display); font-weight: 700;
     font-size: clamp(2.6rem, 6.4vw, 4.6rem);
     line-height: 1.04; letter-spacing: -0.025em; margin: 0 0 26px; max-width: 15ch;
   }
@@ -148,15 +148,10 @@
     display:inline-flex; align-items:center; gap:8px; position:relative; overflow:hidden; z-index:1;
     transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s cubic-bezier(.16,1,.3,1);
   }
+  .btn:hover{ transform: translateY(-2px); }
   .btn:active{ transform: scale(.96); }
   .btn-solid{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
   .btn-solid:hover{ background: var(--accent); border-color: var(--accent); color: #fff; }
-  .btn-solid::before{
-    content:''; position:absolute; top:0; left:-75%; width:50%; height:100%; z-index:1;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,.4), transparent);
-    transform: skewX(-18deg); transition: left .6s cubic-bezier(.16,1,.3,1); pointer-events:none;
-  }
-  .btn-solid:hover::before{ left: 130%; }
   .btn-ghost{ color: var(--ink); }
   .btn-ghost::after{
     content:''; position:absolute; inset:0; z-index:-1; border-radius:inherit;
@@ -230,38 +225,15 @@
 
   .card-links{ display:flex; gap:10px; margin-top:auto; padding-top:6px; }
   .card-links a{
-    font-size: 13.5px; font-weight:600; padding: 8px 16px; border-radius:999px; position:relative; overflow:hidden; z-index:1;
+    font-size: 13.5px; font-weight:600; padding: 8px 16px; border-radius:999px;
     border: 1px solid var(--border); color: var(--ink);
     transition: border-color .2s ease, background .2s ease, color .2s ease, transform .18s cubic-bezier(.16,1,.3,1);
   }
+  .card-links a:hover{ transform: translateY(-2px); }
   .card-links a:active{ transform: scale(.94); }
   .card-links a.primary{ background: var(--ink); border-color: var(--ink); color: var(--bg); }
   .card-links a.primary:hover{ background: var(--accent); border-color: var(--accent); color:#fff; }
-  .card-links a.primary::before{
-    content:''; position:absolute; top:0; left:-75%; width:50%; height:100%; z-index:1;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,.4), transparent);
-    transform: skewX(-18deg); transition: left .55s cubic-bezier(.16,1,.3,1); pointer-events:none;
-  }
-  .card-links a.primary:hover::before{ left: 130%; }
-  .card-links a:not(.primary)::after{
-    content:''; position:absolute; inset:0; z-index:-1; border-radius:inherit;
-    background: var(--accent-soft); transform: scaleX(0); transform-origin:left;
-    transition: transform .3s cubic-bezier(.16,1,.3,1);
-  }
-  .card-links a:not(.primary):hover{ border-color: var(--accent); color: var(--accent); }
-  .card-links a:not(.primary):hover::after{ transform: scaleX(1); }
-
-  /* ---- cursor glow: soft light that trails the pointer across the whole page ---- */
-  #cursor-glow{
-    position: fixed; top:0; left:0; width: 420px; height: 420px; margin-left:-210px; margin-top:-210px;
-    border-radius:50%; pointer-events:none; z-index: 6; opacity:0;
-    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 72%);
-    transition: opacity .4s ease, width .35s cubic-bezier(.16,1,.3,1), height .35s cubic-bezier(.16,1,.3,1), margin .35s cubic-bezier(.16,1,.3,1);
-    will-change: transform;
-  }
-  #cursor-glow.is-active{ opacity:1; }
-  #cursor-glow.is-hot{ width: 580px; height:580px; margin-left:-290px; margin-top:-290px; }
-  @media (hover: none), (prefers-reduced-motion: reduce){ #cursor-glow{ display:none; } }
+  .card-links a:not(.primary):hover{ border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
 
   /* -- product glyphs -- */
   .glyph{ flex:1; min-height: 64px; }
@@ -303,7 +275,7 @@
   .stats-row{ display:grid; grid-template-columns: 1.3fr 1fr 1fr; gap:20px; margin-top: 44px; }
   @media (max-width: 760px){ .stats-row{ grid-template-columns: 1fr; } }
   .stat{ background: var(--panel); border:1px solid var(--border); border-radius: var(--radius-md); padding: 28px; }
-  .stat .num{ font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight:800; color: var(--accent); line-height:1; margin-bottom:10px; }
+  .stat .num{ font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight:700; color: var(--accent); line-height:1; margin-bottom:10px; }
   .stat .lbl{ color: var(--ink-dim); font-size: 15px; max-width: 30ch; }
 
   /* ---- process ---- */
@@ -330,7 +302,7 @@
     padding: 56px; position:relative; overflow:hidden;
   }
   :root[data-theme="dark"] .contact-box{ background: var(--panel); color: var(--ink); border: 1px solid var(--border); }
-  .contact-box h2{ font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight:800; margin:0 0 14px; letter-spacing:-0.02em; max-width: 16ch; }
+  .contact-box h2{ font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight:700; margin:0 0 14px; letter-spacing:-0.02em; max-width: 16ch; }
   .contact-box p.lead{ color: color-mix(in srgb, var(--bg) 70%, transparent); max-width: 50ch; margin:0 0 32px; font-size: 16.5px; }
   :root[data-theme="dark"] .contact-box p.lead{ color: var(--ink-dim); }
   .email-row{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom: 30px; }
@@ -350,6 +322,7 @@
   footer{ padding: 36px 0 48px; text-align:center; font-size: 13.5px; color: var(--ink-faint); }
 
   a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  strong{ font-weight: 600; }
 
   /* magnetic cta wrapper */
   .magnetic{ display:inline-block; transition: transform .25s cubic-bezier(.16,1,.3,1); }
@@ -688,38 +661,6 @@
       });
     }, { threshold: 0.5 });
     nums.forEach(function(el){ obs.observe(el); });
-  })();
-
-  // cursor glow: a soft light that trails the pointer with a little lag,
-  // and blooms wider over anything clickable
-  (function(){
-    if (window.matchMedia('(hover: none)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var glow = document.createElement('div');
-    glow.id = 'cursor-glow';
-    document.body.appendChild(glow);
-
-    var mouseX = 0, mouseY = 0, curX = 0, curY = 0, started = false;
-
-    window.addEventListener('mousemove', function(e){
-      mouseX = e.clientX; mouseY = e.clientY;
-      if (!started){ curX = mouseX; curY = mouseY; started = true; glow.classList.add('is-active'); }
-    });
-    document.addEventListener('mouseleave', function(){ glow.classList.remove('is-active'); });
-    document.addEventListener('mouseenter', function(){ if (started) glow.classList.add('is-active'); });
-
-    (function loop(){
-      curX += (mouseX - curX) * 0.14;
-      curY += (mouseY - curY) * 0.14;
-      glow.style.transform = 'translate(' + curX + 'px,' + curY + 'px)';
-      requestAnimationFrame(loop);
-    })();
-
-    document.querySelectorAll('a, button, .bento-card').forEach(function(el){
-      el.addEventListener('mouseenter', function(){ glow.classList.add('is-hot'); });
-      el.addEventListener('mouseleave', function(){ glow.classList.remove('is-hot'); });
-    });
   })();
 
   // copy email
